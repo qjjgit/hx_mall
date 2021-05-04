@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.mall.mapper.GoodsPropertyNameMapper">
+  <resultMap id="BaseResultMap" type="GoodsPropertyName">
+    <id column="id" jdbcType="BIGINT" property="goodsPropertyNameId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="sort" jdbcType="SMALLINT" property="sort" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+</mapper>
