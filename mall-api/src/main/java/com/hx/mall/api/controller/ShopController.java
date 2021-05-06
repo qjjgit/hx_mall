@@ -7,6 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ShopController {
+    //    @Resource
+    //    ShopInfoService shopInfoService;
+    //
+    //    @Resource
+    //    GoodsInfoService goodsInfoService;
     @RequestMapping("/shop/login/index")
     public ModelAndView index(ModelAndView modelAndView){
         modelAndView.setViewName("shop_login");
