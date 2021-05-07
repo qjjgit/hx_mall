@@ -1,19 +1,23 @@
 package com.hx.mall.api;
 
 import com.hx.mall.common.PBKDF2;
+import com.hx.mall.mapper.ShopInfoMapper;
 import com.hx.mall.pojo.ShopInfo;
+import com.hx.mall.service.ShopInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @SpringBootTest
 @Slf4j
 class MallApiApplicationTests {
 
-//    @Resource
-//    private ShopInfoMapper shopInfoMapper;
+    @Autowired
+    private ShopInfoService shopInfoService;
 
     @Test
     void insertOperate() {
@@ -29,10 +33,17 @@ class MallApiApplicationTests {
     @Test
     void verify(){
         ShopInfo shopInfo = new ShopInfo();
-        shopInfo.setShopId(1001L);
+        shopInfo.setShopId(1002L);
         ShopInfo shop = shopInfo.selectById();
         boolean verify = PBKDF2.verify("1232qwe", shop.getSalt(), shop.getPasswordHash());
         System.out.println("verify = " + verify);
+    }
+    @Test
+    void select1Operate(){
+        ShopInfo shopInfo = new ShopInfo();
+        shopInfo.setShopId(1001L);
+        ShopInfo shop = shopInfoService.getById(shopInfo.getShopId());
+        System.out.println(shop);
     }
     @Test
     void selectOperate(){
@@ -40,21 +51,24 @@ class MallApiApplicationTests {
         for (ShopInfo shopInfo : list) {
             System.out.println(shopInfo);
         }
-        log.error("error...........");
-        log.warn("warn...........");
-        log.info("info...........");
-        log.debug("debug..........");
     }
     @Test
     void updateOperate(){
         ShopInfo shop = new ShopInfo();
-        shop.setShopId(1001L);
-        shop.setShopName("高端家具旗舰店");
-        shop.setSellerName("张三");
+        shop.setShopId(1002L);
+        shop.setShopName("外设旗舰店");
+        shop.setSellerName("李四");
         shop.setPhone("18594036685");
-        shop.setLocation("广西");
-        if (shop.updateById()) {
+        shop.setLocation("北京");
+        if (shopInfoService.saveOrUpdate(shop)) {
             System.out.println("修改成功!");
         }
+    }
+    @Test
+    void delOperate(){
+        ShopInfo shopInfo = new ShopInfo();
+        shopInfo.setShopId(1001L);
+        boolean ok = shopInfoService.removeById(shopInfo);
+        if (ok) System.out.println("del success");
     }
 }

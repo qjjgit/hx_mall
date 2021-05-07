@@ -189,6 +189,7 @@
         </root>
         <logger name="com.hx.mall" level="debug"/>
         <logger name="com.zaxxer.hikari" level="WARN"/>
+        <logger name="org.mybatis.spring.mapper" level="info"/>
         <logger name="org.mybatis" level="debug"/>
         <logger name="org.apache.ibatis" level="debug"/>
         <logger name="com.hx.mall.mapper" level="debug" >

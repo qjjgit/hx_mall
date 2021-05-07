@@ -3,9 +3,13 @@ package com.hx.mall.api;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.hx.mall.mapper"})
+@EnableCaching
+@MapperScan("com.hx.mall.mapper")
+@ComponentScan("com.hx.mall.service")
 public class MallApplication {
 
     public static void main(String[] args) {
