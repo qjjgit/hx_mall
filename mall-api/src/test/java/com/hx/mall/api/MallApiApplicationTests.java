@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.time.Duration;
 import java.util.List;
 
 @SpringBootTest
@@ -42,7 +43,7 @@ class MallApiApplicationTests {
     void select1Operate(){
         ShopInfo shopInfo = new ShopInfo();
         shopInfo.setShopId(1001L);
-        ShopInfo shop = shopInfoService.getById(shopInfo.getShopId());
+        ShopInfo shop = shopInfoService.getById(shopInfo);
         System.out.println(shop);
     }
     @Test

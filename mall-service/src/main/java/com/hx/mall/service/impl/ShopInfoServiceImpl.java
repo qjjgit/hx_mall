@@ -46,4 +46,10 @@ public class ShopInfoServiceImpl extends ServiceImpl<ShopInfoMapper, ShopInfo> i
         entity.setStatus(0);
         return super.updateById(entity);
     }
+    public boolean removeById(Long id){
+        ShopInfo shop = new ShopInfo();
+        shop.setShopId(id);
+        shop.setStatus(0);
+        return super.updateById(shop);
+    }
 }
