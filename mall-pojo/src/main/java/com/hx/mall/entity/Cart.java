@@ -1,4 +1,4 @@
-package com.hx.mall.pojo;
+package com.hx.mall.entity;
 
 import java.util.Date;
 import java.io.Serializable;

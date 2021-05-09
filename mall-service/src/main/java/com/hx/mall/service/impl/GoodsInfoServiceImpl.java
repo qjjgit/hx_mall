@@ -1,7 +1,7 @@
 package com.hx.mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hx.mall.pojo.GoodsInfo;
+import com.hx.mall.entity.GoodsInfo;
 import com.hx.mall.mapper.GoodsInfoMapper;
 import com.hx.mall.service.GoodsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

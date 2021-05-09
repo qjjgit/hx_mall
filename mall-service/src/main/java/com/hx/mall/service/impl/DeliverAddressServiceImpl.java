@@ -2,7 +2,7 @@ package com.hx.mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hx.mall.mapper.DeliverAddressMapper;
-import com.hx.mall.pojo.DeliverAddress;
+import com.hx.mall.entity.DeliverAddress;
 import com.hx.mall.service.DeliverAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.pojo.Cart;
+import com.hx.mall.entity.Cart;
 
 /**
  * (Cart)表服务接口

@@ -1,7 +1,7 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.pojo.DeliverAddress;
+import com.hx.mall.entity.DeliverAddress;
 
 /**
  * 用户收货地址表(DeliverAddress)表服务接口

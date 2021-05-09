@@ -1,7 +1,7 @@
 package com.hx.mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hx.mall.pojo.UserAuths;
+import com.hx.mall.entity.UserAuths;
 import com.hx.mall.mapper.UserAuthsMapper;
 import com.hx.mall.service.UserAuthsService;
 import org.springframework.beans.factory.annotation.Autowired;

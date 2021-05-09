@@ -1,4 +1,4 @@
-package com.hx.mall.pojo;
+package com.hx.mall.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,24 +9,30 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * (GoodsProperty)表实体类
+ * (GoodsSku)表实体类
  *
  * @author 覃建嘉
- * @since 2021-04-29 16:47:55
+ * @since 2021-04-29 16:48:31
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("goods_property")
-public class GoodsProperty extends Model<GoodsProperty> {
+@TableName("goods_sku")
+public class GoodsSku extends Model<GoodsSku> {
 
     @TableId(value = "id",type = IdType.AUTO)
-    private Long goodsPropertyId;
+    private Long goodsSkuId;
 
     private Long goodsId;
 
-    private Long propNameId;
+    private String title;
 
-    private Long propValueId;
+    private Double price;
+    //库存
+    private Integer stock;
+    //商品属性表ID，以逗号分隔
+    private String properties;
+
+    private Integer status;
 
     private Date createdTime;
 
@@ -39,6 +45,6 @@ public class GoodsProperty extends Model<GoodsProperty> {
      */
     @Override
     protected Serializable pkVal() {
-        return this.goodsPropertyId;
+        return this.goodsSkuId;
     }
 }

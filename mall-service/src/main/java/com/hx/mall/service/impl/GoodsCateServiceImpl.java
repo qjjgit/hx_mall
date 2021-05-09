@@ -2,7 +2,7 @@ package com.hx.mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hx.mall.mapper.GoodsCateMapper;
-import com.hx.mall.pojo.GoodsCate;
+import com.hx.mall.entity.GoodsCate;
 import com.hx.mall.service.GoodsCateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

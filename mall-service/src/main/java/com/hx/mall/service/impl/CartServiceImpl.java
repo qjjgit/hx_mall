@@ -2,7 +2,7 @@ package com.hx.mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hx.mall.mapper.CartMapper;
-import com.hx.mall.pojo.Cart;
+import com.hx.mall.entity.Cart;
 import com.hx.mall.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

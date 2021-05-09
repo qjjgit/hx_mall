@@ -1,7 +1,7 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.pojo.GoodsCate;
+import com.hx.mall.entity.GoodsCate;
 
 /**
  * goods_categories商品类别表(GoodsCate)表服务接口

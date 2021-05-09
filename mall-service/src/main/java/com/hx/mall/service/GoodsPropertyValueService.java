@@ -1,7 +1,7 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.pojo.GoodsPropertyValue;
+import com.hx.mall.entity.GoodsPropertyValue;
 
 /**
  * (GoodsPropertyValue)表服务接口

@@ -1,7 +1,7 @@
 package com.hx.mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hx.mall.pojo.ShopInfo;
+import com.hx.mall.entity.ShopInfo;
 import com.hx.mall.mapper.ShopInfoMapper;
 import com.hx.mall.service.ShopInfoService;
 import org.springframework.cache.annotation.CacheConfig;
@@ -9,8 +9,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import java.io.Serializable;
 
 /**
  * (ShopInfo)表服务实现类

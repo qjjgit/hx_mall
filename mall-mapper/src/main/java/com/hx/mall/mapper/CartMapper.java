@@ -1,7 +1,7 @@
 package com.hx.mall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hx.mall.pojo.Cart;
+import com.hx.mall.entity.Cart;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

@@ -1,16 +1,13 @@
 package com.hx.mall.api;
 
 import com.hx.mall.common.PBKDF2;
-import com.hx.mall.mapper.ShopInfoMapper;
-import com.hx.mall.pojo.ShopInfo;
+import com.hx.mall.entity.ShopInfo;
 import com.hx.mall.service.ShopInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
-import java.time.Duration;
 import java.util.List;
 
 @SpringBootTest

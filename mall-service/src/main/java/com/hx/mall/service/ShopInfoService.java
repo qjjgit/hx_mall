@@ -1,9 +1,7 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.pojo.ShopInfo;
-
-import java.io.Serializable;
+import com.hx.mall.entity.ShopInfo;
 
 /**
  * (ShopInfo)表服务接口

@@ -1,7 +1,7 @@
 package com.hx.mall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hx.mall.pojo.DeliverAddress;
+import com.hx.mall.entity.DeliverAddress;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

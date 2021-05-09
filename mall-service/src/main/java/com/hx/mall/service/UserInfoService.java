@@ -1,7 +1,7 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.pojo.UserInfo;
+import com.hx.mall.entity.UserInfo;
 
 /**
  * (UserInfo)表服务接口
