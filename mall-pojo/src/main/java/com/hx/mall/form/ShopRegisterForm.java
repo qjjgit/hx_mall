@@ -9,7 +9,7 @@ public class ShopRegisterForm {
 
     private String email;
 
-    private String code;
+    private String captcha;
 
     private String password;
 

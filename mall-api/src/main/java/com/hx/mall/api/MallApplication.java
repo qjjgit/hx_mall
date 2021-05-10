@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableCaching
 @MapperScan("com.hx.mall.mapper")
 @ComponentScan("com.hx.mall.service")
+@ComponentScan("com.hx.mall.api")
 public class MallApplication {
 
     public static void main(String[] args) {

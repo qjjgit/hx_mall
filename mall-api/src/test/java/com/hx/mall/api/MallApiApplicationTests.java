@@ -3,6 +3,7 @@ package com.hx.mall.api;
 import com.hx.mall.common.PBKDF2;
 import com.hx.mall.entity.ShopInfo;
 import com.hx.mall.service.ShopInfoService;
+import com.ramostear.captcha.HappyCaptcha;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,9 @@ class MallApiApplicationTests {
         shopInfo.setShopId(1001L);
         boolean ok = shopInfoService.removeById(shopInfo);
         if (ok) System.out.println("del success");
+    }
+    @Test
+    void code(){
+
     }
 }
