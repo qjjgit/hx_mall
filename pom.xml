@@ -7,7 +7,7 @@
         <module>mall-pojo</module>
         <module>mall-mapper</module>
         <module>mall-service</module>
-        <module>mall-api</module>
+        <module>mall-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
