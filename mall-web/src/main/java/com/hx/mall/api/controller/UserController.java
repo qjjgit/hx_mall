@@ -25,7 +25,7 @@ public class UserController {
     @RequestMapping("/user/login")
     public void login(HttpServletRequest request, @RequestBody Map<String,String> form, String loginData, String captcha){
 
-        try {
+        try {//....
             UserInfo userInfo = userService.loginAuth(request, form);
         } catch (GlobalException e) {
             e.printStackTrace();
