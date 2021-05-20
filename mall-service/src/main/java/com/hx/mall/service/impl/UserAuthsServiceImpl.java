@@ -22,4 +22,6 @@ public class UserAuthsServiceImpl extends ServiceImpl<UserAuthsMapper, UserAuths
     public UserAuthsServiceImpl(UserAuthsMapper userAuthsMapper) {
         this.userAuthsMapper = userAuthsMapper;
     }
+
+
 }

@@ -4,9 +4,12 @@
   <resultMap id="BaseResultMap" type="UserAuths">
     <id column="id" jdbcType="BIGINT" property="userAuthId" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="identity_type" jdbcType="VARCHAR" property="identityType" />
+    <result column="identity_type" jdbcType="TINYINT" property="identityType" />
     <result column="identifier" jdbcType="VARCHAR" property="identifier" />
     <result column="credential" jdbcType="VARCHAR" property="credential" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
   </resultMap>
+  <select id="auth" resultType="java.lang.Boolean">
+
+  </select>
 </mapper>

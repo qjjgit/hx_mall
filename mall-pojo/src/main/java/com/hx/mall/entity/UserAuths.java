@@ -15,15 +15,17 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("user_auths") // TODO: write table name
+@TableName("user_auths")
 public class UserAuths extends Model<UserAuths> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long userAuthId;
 
     private String userId;
-    //username、email、phone、微博、微信
-    private String identityType;
+    /*
+     * phone、username、email、微博、微信
+     */
+    private int identityType;
     //name、邮箱、phone、微博UID、微信UserName
     private String identifier;
     //pwd_hash、微博access_token、微信token

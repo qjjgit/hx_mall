@@ -5,12 +5,15 @@ import com.ramostear.captcha.support.CaptchaStyle;
 import com.ramostear.captcha.support.CaptchaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class ShopController {
@@ -23,6 +26,7 @@ public class ShopController {
     public String index0(){
         return "首页";
     }
+
     @RequestMapping("/shop/login/index")
     public ModelAndView index(ModelAndView modelAndView){
         modelAndView.setViewName("shop_login");

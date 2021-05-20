@@ -1,5 +1,6 @@
 package com.hx.mall.api;
 
+import com.hx.mall.api.filter.MyFilter;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.hx.mall.mapper")
 @ComponentScan("com.hx.mall.service")
 @ComponentScan("com.hx.mall.api")
+
 public class MallApplication {
 
     public static void main(String[] args) {

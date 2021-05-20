@@ -11,4 +11,6 @@ import com.hx.mall.entity.UserAuths;
  */
 public interface UserAuthsService extends IService<UserAuths> {
 
+    boolean auth();
+
 }

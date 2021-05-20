@@ -9,4 +9,7 @@
     <result column="credential" jdbcType="VARCHAR" property="credential" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
   </resultMap>
+  <select id="auth" resultType="java.lang.Boolean">
+    select identifier from user_auths where identity_type=""
+  </select>
 </mapper>

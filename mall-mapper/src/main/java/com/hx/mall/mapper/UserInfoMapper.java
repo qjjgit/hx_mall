@@ -14,5 +14,5 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
-
+    UserInfo authByPhone();
 }

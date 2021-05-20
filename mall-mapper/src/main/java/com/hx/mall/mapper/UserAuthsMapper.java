@@ -14,5 +14,5 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface UserAuthsMapper extends BaseMapper<UserAuths> {
-
+    boolean auth();
 }
