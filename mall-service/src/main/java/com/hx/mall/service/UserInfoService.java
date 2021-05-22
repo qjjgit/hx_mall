@@ -1,8 +1,10 @@
 package com.hx.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hx.mall.common.GlobalException;
+import com.hx.mall.common.exception.GlobalException;
+import com.hx.mall.common.exception.UserVerifyException;
 import com.hx.mall.entity.UserInfo;
+import com.hx.mall.form.UserRegisterForm;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -14,5 +16,6 @@ import java.util.Map;
  * @since 2021-04-29 22:07:32
  */
 public interface UserInfoService extends IService<UserInfo> {
-    UserInfo loginAuth(HttpServletRequest request,Map<String, String> form) throws GlobalException;
+    UserInfo loginAuth(HttpServletRequest request,Map<String, String> form) throws UserVerifyException;
+    boolean register(HttpServletRequest request, UserRegisterForm form) throws UserVerifyException;
 }

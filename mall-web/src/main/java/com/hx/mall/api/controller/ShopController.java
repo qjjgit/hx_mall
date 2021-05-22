@@ -29,7 +29,7 @@ public class ShopController {
 
     @RequestMapping("/shop/login/index")
     public ModelAndView index(ModelAndView modelAndView){
-        modelAndView.setViewName("shop_login");
+        modelAndView.setViewName("templates/shop_login");
          return modelAndView;
     }
     //商家注册

@@ -1,10 +1,13 @@
 package com.hx.mall.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hx.mall.common.Constant;
-import com.hx.mall.common.GlobalException;
-import com.hx.mall.common.ValidatorUtil;
+import com.hx.mall.common.Consts;
+import com.hx.mall.common.exception.GlobalException;
+import com.hx.mall.common.exception.UserVerifyException;
+import com.hx.mall.common.utils.ValidatorUtil;
 import com.hx.mall.entity.UserAuths;
+import com.hx.mall.form.UserRegisterForm;
 import com.hx.mall.mapper.UserAuthsMapper;
 import com.hx.mall.mapper.UserInfoMapper;
 import com.hx.mall.entity.UserInfo;
@@ -34,24 +37,35 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     }
 
     @Override
-    public UserInfo loginAuth(HttpServletRequest request, Map<String,String> form) throws GlobalException {
+    public UserInfo loginAuth(HttpServletRequest request, Map<String,String> form) throws UserVerifyException {
         if (ValidatorUtil.isPhoneNumber(form.get("phone"))) {
             if (form.get("smsCode")!=null&&!form.get("smsCode").isEmpty()) {
                 if (smsCodeVerify(request,form.get("smsCode"))){
                     return authByPhoneAndSms(form.get("phone"));
-                }else {throw new GlobalException("验证码错误！",600);}
+                }else {throw new UserVerifyException("验证码错误！", Consts.ErrorCode.SMS_CODE_ERROR);}
             }else{
-//                form.get("pwd")!=null
+//                form.get("pwd")
             }
         }else if(ValidatorUtil.isEmail(form.get("email"))){
             return null;
         }
         return null;
     }
+
+    @Override
+    public boolean register(HttpServletRequest request,UserRegisterForm form) throws UserVerifyException {
+        return false;
+    }
+
     private UserInfo authByPhoneAndSms(String phone){
-        UserAuths userAuths = new UserAuths();
-        userAuths.setIdentityType(Constant.IdentityType.PHONE);
-        userAuths.setIdentifier(phone);
+        QueryWrapper<UserAuths> query = new QueryWrapper<>();
+        query.eq("identity_type",Consts.IdentityType.PHONE);
+        query.eq("identifier",phone);
+        UserAuths userAuths = userAuthsMapper.selectOne(query);
+        if (userAuths==null){
+            //当前手机号未绑定账号 或 未注册
+        }
+        System.out.println(userAuths);
         return null;
     }
     public boolean smsCodeVerify(HttpServletRequest request,String smsCode){

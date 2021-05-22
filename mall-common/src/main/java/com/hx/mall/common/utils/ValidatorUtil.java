@@ -1,4 +1,4 @@
-package com.hx.mall.common;
+package com.hx.mall.common.utils;
 
 import java.util.regex.Pattern;
 

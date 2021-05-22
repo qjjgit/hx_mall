@@ -22,17 +22,16 @@ public class UserInfo extends Model<UserInfo> {
     @TableId(value = "id", type = IdType.AUTO)
     private String userId;
 
-    private String username;
-
     private String nickname;
 
     private String headThumb;
 
     private String realName;
 
-    private Integer age;
+    // 0女、1男、2未知
+    private Integer sex;
 
-    private String sex;
+    private Date birthday;
 
     private Date createdTime;
 

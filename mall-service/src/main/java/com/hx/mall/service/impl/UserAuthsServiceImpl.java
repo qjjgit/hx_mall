@@ -24,4 +24,8 @@ public class UserAuthsServiceImpl extends ServiceImpl<UserAuthsMapper, UserAuths
     }
 
 
+    @Override
+    public boolean auth() {
+        return false;
+    }
 }
