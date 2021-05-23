@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @RequestMapping("/user/register")
-    public void register(HttpServletRequest request, @ModelAttribute UserRegisterForm form){
+    public void register(HttpServletRequest request,/* @ModelAttribute*/ UserRegisterForm form){
         try {
             System.out.println(form);
             userService.register(request,form);

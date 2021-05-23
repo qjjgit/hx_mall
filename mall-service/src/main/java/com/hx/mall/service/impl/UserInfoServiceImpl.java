@@ -3,6 +3,7 @@ package com.hx.mall.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hx.mall.common.Consts;
+import com.hx.mall.common.PBKDF2;
 import com.hx.mall.common.exception.GlobalException;
 import com.hx.mall.common.exception.UserVerifyException;
 import com.hx.mall.common.utils.ValidatorUtil;
@@ -12,6 +13,7 @@ import com.hx.mall.mapper.UserAuthsMapper;
 import com.hx.mall.mapper.UserInfoMapper;
 import com.hx.mall.entity.UserInfo;
 import com.hx.mall.service.UserInfoService;
+import com.hx.mall.vo.UserBaseInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,23 +53,68 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         }
         return null;
     }
-
-    @Override
-    public boolean register(HttpServletRequest request,UserRegisterForm form) throws UserVerifyException {
-        return false;
-    }
-
     private UserInfo authByPhoneAndSms(String phone){
-        QueryWrapper<UserAuths> query = new QueryWrapper<>();
-        query.eq("identity_type",Consts.IdentityType.PHONE);
-        query.eq("identifier",phone);
-        UserAuths userAuths = userAuthsMapper.selectOne(query);
-        if (userAuths==null){
+//        QueryWrapper<UserAuths> query = new QueryWrapper<>();
+//        query.eq("identity_type",Consts.IdentityType.PHONE);
+//        query.eq("identifier",phone);
+//        UserAuths userAuths = userAuthsMapper.selectOne(query);
+        if (userAuthsMapper.exists(phone, Consts.IdentityType.PHONE)){
             //当前手机号未绑定账号 或 未注册
         }
-        System.out.println(userAuths);
         return null;
     }
+
+    @Override
+    public UserBaseInfoVO register(HttpServletRequest request, UserRegisterForm form) throws UserVerifyException {
+        if (smsCodeVerify(request,form.getSmsCode())){
+            UserBaseInfoVO userBaseInfoVO = new UserBaseInfoVO();
+            String salt=null;
+            if(form.getPassword()!=null) {
+                salt = PBKDF2.getSalt();
+            }
+            if (form.getPhone()!=null){
+                if (!ValidatorUtil.isPhoneNumber(form.getPhone())){
+                    throw new UserVerifyException("请输入正确的手机号！", Consts.ErrorCode.PHONE_NUMBER_FORMAT_ERROR);
+                }else if (userAuthsMapper.exists(form.getPhone(), Consts.IdentityType.PHONE)){
+                    throw new UserVerifyException("该手机号已被注册过！", Consts.ErrorCode.PHONE_ALREADY_REGISTERED_ERROR);
+                }else{
+                    UserAuths auth = new UserAuths();
+                    auth.setIdentityType(Consts.IdentityType.PHONE);
+                    auth.setIdentifier(form.getPhone());
+                    if(salt!=null){
+                        auth.setSalt(salt);
+                        auth.setCredential(PBKDF2.getPBKDF2(form.getPassword(),salt));
+                    }
+                    if (userAuthsMapper.addAuth(auth)) {
+
+                    }
+                }
+            }
+            if (form.getUserName()!=null){
+                if (userAuthsMapper.exists(form.getUserName(), Consts.IdentityType.EMAIL)){
+                    throw new UserVerifyException("该用户名已存在！", Consts.ErrorCode.USERNAME_ALREADY_REGISTERED_ERROR);
+                }else if(form.getUserName()!=null){
+                    UserAuths auth = new UserAuths();
+                    auth.setIdentityType(Consts.IdentityType.USERNAME);
+                    auth.setIdentifier(form.getUserName());
+                    if(salt!=null){
+                        auth.setSalt(salt);
+                        auth.setCredential(PBKDF2.getPBKDF2(form.getPassword(),salt));
+                    }
+                    userAuthsMapper.addAuth(auth);
+                }
+            }
+
+            if (form.getPhone()==null && form.getUserName()==null ){
+                throw new UserVerifyException("手机号和用户名至少填写一个！", Consts.ErrorCode.USER_REGISTER_ERROR);
+            }
+        }else {throw new UserVerifyException("验证码错误！", Consts.ErrorCode.SMS_CODE_ERROR);}
+        return null;
+    }
+    private boolean registerByPhone( UserRegisterForm form){
+
+    }
+
     public boolean smsCodeVerify(HttpServletRequest request,String smsCode){
         String smsCode_session = (String) request.getSession(false).getAttribute("smsCode");
         if (null==smsCode_session||null==smsCode)return false;

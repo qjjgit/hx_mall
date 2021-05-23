@@ -15,4 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserAuthsMapper extends BaseMapper<UserAuths> {
     boolean auth();
+
+    boolean exists(/*@Param("offset") */String identifier, int identityType);
+
+    boolean addAuth(UserAuths auth);
 }

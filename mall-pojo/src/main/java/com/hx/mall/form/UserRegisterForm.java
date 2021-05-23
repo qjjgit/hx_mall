@@ -7,7 +7,9 @@ public class UserRegisterForm {
 
     private String phone;
 
-    private String email;
+    private String userName;
+
+//    private String email;
 
     private String smsCode;
 

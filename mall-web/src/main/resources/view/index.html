@@ -6,17 +6,17 @@
     <link href="/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container-fluid">
+    <div>
         <h1>注册</h1>
         <form action="/user/register" method="post">
             <div>
                 <label>
-                    <input name="phone" placeholder="输入手机号"/>
+                    <input name="phone" placeholder="输入手机号" maxlength="11" type="text"/>
                 </label>
             </div><br/>
             <div>
                 <label>
-                    <input name="smsCode" placeholder="验证码"/>
+                    <input name="smsCode" placeholder="验证码" maxlength="6" type="text"/>
                 </label>
             </div><br/>
             <input type="submit" value="提交"/>

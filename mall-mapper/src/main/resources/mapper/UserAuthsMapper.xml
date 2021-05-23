@@ -12,4 +12,13 @@
   <select id="auth" resultType="java.lang.Boolean">
 
   </select>
+
+  <select id="exists" parameterType="java.lang.String" resultType="java.lang.Boolean">
+    select COUNT(id) from user_auths where identity_type=#{phone} and identifier=#{identifier}
+  </select>
+
+  <insert id="addAuth" parameterType="com.hx.mall.entity.UserAuths" useGeneratedKeys="true" keyProperty="id">
+    insert into user_auths(identity_type, identifier,credential,salt)
+    values(#{identity_type},#{identifier},#{credential}, #{salt})
+  </insert>
 </mapper>
